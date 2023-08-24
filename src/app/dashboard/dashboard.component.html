@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h1>Recruitment Center</h1>
+    </a>
+    <button class="btn btn-outline-primary" type="submit" routerLink="/add"><i class="bi bi-person-plus-fill"></i></button>
+  </div>
+</nav>
+
+<div class="table-responsive container mt-2 dashboard">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Position</th>
+        <th scope="col">Type</th>
+        <th scope="col">Location</th>
+        <th scope="col">Seekers</th>
+        <th scope="col">Offer Date</th>
+        <th scope="col">View Job</th>
+        <th scope="col">View Seekers</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let offer of offers">
+        <th scope="row">{{offer.offerid}}</th>
+        <td>{{offer.title}}</td>
+        <td>{{offer.type}}</td>
+        <td>{{offer.location}}</td>
+        <td>{{offer.seekers}}</td>
+        <td>{{offer.date | date:'longDate'}}</td>
+        <td><button routerLink="/jobs/{{offer.offerid}}" class="btn btn-outline-primary"><i class="bi bi-eye"></i></button></td>
+        <td><button routerLink="/seekers/{{offer.offerid}}" class="btn btn-outline-primary"><i class="bi bi-person-vcard"></i></button></td>
+        <td><button class="btn btn-outline-danger"><i class="bi bi-person-x-fill"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

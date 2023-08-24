@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light rounded">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <h1>Recruitment Center</h1>
+        </a>
+    </div>
+</nav>
+
+<div class="table-responsive container mt-2 dashboard">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">View</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let seeker of seekers">
+                <th scope="row">{{seeker.seekerid}}</th>
+                <td>{{seeker.firstname}}</td>
+                <td>{{seeker.lastname}}</td>
+                <td>{{seeker.date | date:'longDate'}}</td>
+                <td><button type="button" (click)="showSeekerDetails(seeker.applyid)" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"><i class="bi bi-eye"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Modal Popup -- View Seeker Detail-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Apply ID #{{seekerDetails.applyid}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid container mt-2 dashboard">
+                        <!-- Seeker ID -->
+                        <div class="mb-3">
+                            <label for="seeker-name" class="form-label">Seeker ID #{{seekerDetails.seekerid}}</label>
+                            <p id="seeker-name" class="form-control" placeholder="not filled">{{seekerDetails.firstname}} {{seekerDetails.lastname}}</p>
+                        </div>
+                        <!-- Experience Description -->
+                        <div class="mb-3">
+                            <label for="experience-description" class="form-label">Experience Description</label>
+                            <textarea class="form-control" id="experience-description" rows="3"
+                                placeholder="Experience Description" readonly>{{seekerDetails.experiencedescription}}</textarea>
+                        </div>
+                        <!-- Personal Description -->
+                        <div class="mb-3">
+                            <label for="personal-description" class="form-label">Personal Description</label>
+                            <textarea class="form-control" id="personal-description" rows="3"
+                                placeholder="Personal Description" readonly>{{seekerDetails.personaldescription}}</textarea>
+                        </div>
+                        <!-- Contact Address -->
+                        <div class="mb-3">
+                            <label for="seeker-email" class="form-label">Contact Address</label>
+                            <p id="seeker-email" class="form-control" placeholder="not filled">{{seekerDetails.email}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

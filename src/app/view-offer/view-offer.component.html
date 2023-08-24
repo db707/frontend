@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light rounded">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <h1>Recruitment Center</h1>
+        </a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Title -->
+                    <h3 class="card-title mb-4">{{offerDetails.title}} #{{offerDetails.offerid}}</h3>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <!-- Type -->
+                        <div class="col-md-6">
+                            <p class="card-text"><strong>Type:</strong> {{offerDetails.type}}</p>
+                        </div>
+                        <!-- Location -->
+                        <div class="col-md-6">
+                            <p class="card-text"><strong>Location:</strong> {{offerDetails.location}}</p>
+                        </div>
+                    </div>
+                    <!-- Job Description -->
+                    <div class="mb-4">
+                        <h5 class="card-subtitle mb-3">Job Description</h5>
+                        <p class="card-text">{{offerDetails.jobdescription}}</p>
+                    </div>
+                    <!-- Skills Description -->
+                    <div class="mb-4">
+                        <h5 class="card-subtitle mb-3">Skill Description</h5>
+                        <p class="card-text">{{offerDetails.skilldescription}}</p>
+                    </div>
+                    <!-- Contact Email -->
+                    <div class="mb-4">
+                        <h5 class="card-subtitle mb-3">Contact Address</h5>
+                        <p class="card-text">{{offerDetails.email}}</p>
+                    </div>
+                    <!-- Apply Popup -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Apply</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Apply</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="submitApplyForm" class="needs-validation" novalidate>
+                                        <!-- Name -->
+                                        <div class="mb-3">
+                                            <label for="firstname" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="firstname"
+                                                formControlName='firstname' required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="lastname" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastname"
+                                                formControlName='lastname' required>
+                                        </div>
+                                        <!-- Experience Description -->
+                                        <div class="mb-3">
+                                            <label for="experience-description" class="form-label">Experience
+                                                Description</label>
+                                            <textarea class="form-control" id="experiencedescription" rows="3"
+                                                placeholder="Experience Description"
+                                                formControlName='experiencedescription' required></textarea>
+                                        </div>
+                                        <!-- Personal Description -->
+                                        <div class="mb-3">
+                                            <label for="personal-description" class="form-label">Personal
+                                                Description</label>
+                                            <textarea class="form-control" id="personaldescription" rows="3"
+                                                placeholder="Personal Description" formControlName='personaldescription'
+                                                required></textarea>
+                                        </div>
+                                        <!-- Contact Address -->
+                                        <div class="mb-3">
+                                            <label for="seeker-email" class="form-label">Contact Address</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Your Email Address" formControlName='email' required>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" (click)="submitApply()"
+                                        class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
